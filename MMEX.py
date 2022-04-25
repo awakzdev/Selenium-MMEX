@@ -1,4 +1,3 @@
-import os
 from datetime import date
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
