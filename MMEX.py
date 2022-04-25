@@ -15,7 +15,6 @@ def func(project):
     path = os.getcwd()
     driver = webdriver.Chrome(executable_path=f"{path}/chromedriver.exe")
 
-
     driver.get('https://pva.app.intel.com/mmex/test_population/')
 
     inputElems = driver.find_elements(by=By.CSS_SELECTOR, value='#id_Available_Cycles')
@@ -29,12 +28,10 @@ def func(project):
         action.click(on_element=element)
         action.perform()
 
-
 # Scrap and save the Azure Trigger URL upon successful job
         element = driver.find_element(by=By.XPATH, value="(//*[text()='Job Details'])")
         url = element.get_attribute('href')
         driver.close()
-
 
 # Save scrapped URL into text
     today = date.today()
@@ -49,7 +46,6 @@ def func(project):
         with open(f'C:/SVSHARE/MMEX_Populater/Selenium/Test-Population/{today}/{project}.txt', 'w+') as f:
             f.write(f"{url}")
         print(url)
-
 
 
 func("ADL-S-PRQ")
