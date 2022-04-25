@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Test-Population Sheet) {
             steps {
-                sh 'python ./mmex-population.py'
+                sh 'python ./mmex.py'
             }
         }
     }
