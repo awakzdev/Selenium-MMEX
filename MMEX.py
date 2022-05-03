@@ -51,3 +51,4 @@ def func(project):
 func("ADL-S-PRQ")
 func("ADL-P-PRQ")
 func("ADL-S-BGA")
+func("RPL-P-ES2")
