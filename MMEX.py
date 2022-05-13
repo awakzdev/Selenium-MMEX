@@ -12,8 +12,7 @@ def func(project):
     chromeOptions.add_argument("--disable-dev-shm-using")
     chromeOptions.add_argument("--disable-extensions")
     chromeOptions.headless = True
-    path = os.getcwd()
-    driver = webdriver.Chrome(executable_path=f"{path}/chromedriver.exe")
+    driver = webdriver.Chrome(executable_path="chromedriver.exe")
 
     driver.get('https://pva.app.intel.com/mmex/test_population/')
 
