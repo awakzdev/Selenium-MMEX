@@ -47,7 +47,6 @@ def func(project):
         print(url)
 
 
-func("ADL-S-PRQ")
 func("ADL-P-PRQ")
 func("ADL-S-BGA")
 func("RPL-P-ES2")
