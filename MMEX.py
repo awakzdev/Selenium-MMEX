@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from pathlib import Path
+import multiprocessing
 import os
 
 def func(project):
@@ -47,6 +48,13 @@ def func(project):
         print(url)
 
 
-func("ADL-P-PRQ")
-func("ADL-S-BGA")
-func("RPL-P-ES2")
+if __name__ == "__main__":
+    p1 = multiprocessing.Process(target=func, args=("ADL-P-PRQ", ))
+    p2 = multiprocessing.Process(target=func, args=("ADL-S-BGA", ))
+    p3 = multiprocessing.Process(target=func, args=("RPL-P-ES2", ))
+    p1.start()
+    p2.start()
+    p3.start()
+    p1.join()
+    p2.join()
+    p3.join()
