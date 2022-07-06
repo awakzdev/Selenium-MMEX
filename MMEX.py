@@ -7,6 +7,7 @@ from pathlib import Path
 import concurrent.futures
 import os
 
+
 def populate(project):
     chromeOptions = webdriver.ChromeOptions()
     chromeOptions.add_argument("--no-sandbox")
@@ -22,18 +23,18 @@ def populate(project):
     print(inputElems)
     for inputElem in inputElems:
         inputElem.send_keys(f"{project}")
-        inputElem.send_keys(Keys.TAB);
+        inputElem.send_keys(Keys.TAB)
         element = driver.find_element(by=By.CSS_SELECTOR, value='#btnSubmit')
         action = ActionChains(driver)
         action.click(on_element=element)
         action.perform()
 
-# Scrap and save the Azure Trigger URL upon successful job
+        # Scrap and save the Azure Trigger URL upon successful job
         element = driver.find_element(by=By.XPATH, value="(//*[text()='Job Details'])")
         url = element.get_attribute('href')
         driver.close()
 
-# Save scrapped URL into text
+    # Save scrapped URL into text
     today = date.today()
     print(f'{project}-{today}')
     my_file = Path(f'C:/SVSHARE/MMEX_Populater/Selenium/Test-Population/{today}')
@@ -50,7 +51,7 @@ def populate(project):
 
 if __name__ == "__main__":
     processes = []
-    with concurrent.futures.ProccesPoolExecutor() as executor:
-        p1 = executor.sumbit(populate, "ADL-P-PRQ")
-        p2 = executor.sumbit(populate, "ADL-S-BGA")
-        p3 = executor.sumbit(populate, "RPL-P-ES2")
+    with concurrent.futures.ProcessPoolExecutor() as executor:
+        p1 = executor.submit(populate, "ADL-P-PRQ")
+        p2 = executor.submit(populate, "ADL-S-BGA")
+        p3 = executor.submit(populate, "RPL-P-ES2")
