@@ -4,10 +4,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from pathlib import Path
-import multiprocessing
+import concurrent.futures
 import os
 
-def func(project):
+def populate(project):
     chromeOptions = webdriver.ChromeOptions()
     chromeOptions.add_argument("--no-sandbox")
     chromeOptions.add_argument("--disable-dev-shm-using")
@@ -49,12 +49,8 @@ def func(project):
 
 
 if __name__ == "__main__":
-    p1 = multiprocessing.Process(target=func, args=("ADL-P-PRQ", ))
-    p2 = multiprocessing.Process(target=func, args=("ADL-S-BGA", ))
-    p3 = multiprocessing.Process(target=func, args=("RPL-P-ES2", ))
-    p1.start()
-    p2.start()
-    p3.start()
-    p1.join()
-    p2.join()
-    p3.join()
+    processes = []
+    with concurrent.futures.ProccesPoolExecutor() as executor:
+        p1 = executor.sumbit(populate, "ADL-P-PRQ")
+        p2 = executor.sumbit(populate, "ADL-S-BGA")
+        p3 = executor.sumbit(populate, "RPL-P-ES2")
