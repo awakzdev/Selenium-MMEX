@@ -1,7 +1,2 @@
 # Selenium
-Will only work on a certain environment.
-
-
-Test-Population trigger through PVA (Intel) website. 
-
-Made for MMEX
+Triggers Azure agent through PVA website (Proxy needed) - MMEX (Intel). 
