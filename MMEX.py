@@ -50,7 +50,6 @@ def populate(project):
 
 
 if __name__ == "__main__":
-    processes = []
     with concurrent.futures.ProcessPoolExecutor() as executor:
         p1 = executor.submit(populate, "ADL-P-PRQ")
         p2 = executor.submit(populate, "ADL-S-BGA")
